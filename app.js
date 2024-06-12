@@ -22,7 +22,18 @@ app.get("/view",(req,res)=>{
         }
     )
 })
-
+app.post("/delete",(req,res)=>{
+    let input=req.body
+    pharmacymodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({"status":"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json({"status":"error"})
+        }
+    )
+})
 app.post("/add",(req,res)=>{
     let input =req.body
     let pharmacy = new pharmacymodel(input)
