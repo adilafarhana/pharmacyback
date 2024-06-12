@@ -20,6 +20,21 @@ app.post("/add",(req,res)=>{
     console.log(pharmacy)
     res.send({"status":"success"})
 })
+app.post("/search",(req,res)=>{
+    let input= req.body
+    pharmacymodel.find(input).then(
+    (data) =>{
+        res.json(data)
+    }
+    ).catch(
+        (error)=>{
+    
+        res.json(error)
+    }
+    )
+
+}
+)
 
 
 
